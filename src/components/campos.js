@@ -4,7 +4,7 @@ import { View, Text, TextInput, StyleSheet, Picker, CheckBox, Button } from 'rea
 import { TextInputMask } from 'react-native-masked-text';
 import RNPickerSelect from 'react-native-picker-select';
 
-export const Form = () => {
+export const Formulario = () => {
   const [nome, setNome] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
   const [sexo, setSexo] = useState('');
@@ -13,20 +13,20 @@ export const Form = () => {
     java: false,
     javascript: false,
     python: false,
+    PHP: false,
   });
 
-  const handleCheckboxChange = (key) => {
-    setLinguagens({ ...linguagens, [key]: !linguagens[key] });
+  const handleCheckboxChange = (val) => {
+    setLinguagens({ ...linguagens, [val]: !linguagens[val] });
   };
 
   const handleSubmit = () => {
-    // Lógica para lidar com o envio do formulário
     console.log({
       nome,
       dataNascimento,
       sexo,
       uf,
-      linguagens: Object.keys(linguagens).filter((key) => linguagens[key]),
+      linguagens: Object.keys(linguagens).filter((val) => linguagens[val]),
     });
   };
 
@@ -66,10 +66,34 @@ export const Form = () => {
       <RNPickerSelect
         onValueChange={(value) => setUf(value)}
         items={[
-          { label: 'SP', value: 'SP' },
-          { label: 'RJ', value: 'RJ' },
-          { label: 'MG', value: 'MG' },
-          // Adicione outras UFs conforme necessário
+            { label: 'Selecione a UF', value: '' },
+            { label: 'SP', value: 'SP' },
+            { label: 'RJ', value: 'RJ' },
+            { label: 'MG', value: 'MG' },
+            { label: 'AC', value: 'AC' },
+            { label: 'AL', value: 'AL' },
+            { label: 'AP', value: 'AP' },
+            { label: 'AM', value: 'AM' },
+            { label: 'BA', value: 'BA' },
+            { label: 'CE', value: 'CE' },
+            { label: 'DF', value: 'DF' },
+            { label: 'ES', value: 'ES' },
+            { label: 'GO', value: 'GO' },
+            { label: 'MA', value: 'MA' },
+            { label: 'MT', value: 'MT' },
+            { label: 'MS', value: 'MS' },
+            { label: 'PA', value: 'PA' },
+            { label: 'PB', value: 'PB' },
+            { label: 'PR', value: 'PR' },
+            { label: 'PE', value: 'PE' },
+            { label: 'PI', value: 'PI' },
+            { label: 'RN', value: 'RN' },
+            { label: 'RS', value: 'RS' },
+            { label: 'RO', value: 'RO' },
+            { label: 'RR', value: 'RR' },
+            { label: 'SC', value: 'SC' },
+            { label: 'SE', value: 'SE' },
+            { label: 'TO', value: 'TO' },
         ]}
         style={pickerSelectStyles}
       />
@@ -95,6 +119,13 @@ export const Form = () => {
           <CheckBox
             value={linguagens.python}
             onValueChange={() => handleCheckboxChange('python')}
+          />
+        </Text>
+        <Text style={styles.checkboxOption}>
+          <Text style={styles.checkboxLabel}>PHP</Text>
+          <CheckBox
+            value={linguagens.python}
+            onValueChange={() => handleCheckboxChange('PHP')}
           />
         </Text>
       </View>
