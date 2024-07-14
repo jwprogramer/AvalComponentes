@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
       marginVertical: 4,
     },
     checkboxLabel: {
-      marginRight: 8,
+      marginRight: 10,
     },
   });
