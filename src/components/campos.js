@@ -1,8 +1,9 @@
-// src/components/Form.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Picker, CheckBox, Button } from 'react-native';
+import { View, Text, TextInput, Picker, CheckBox, Button } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 import RNPickerSelect from 'react-native-picker-select';
+import { styles } from '../styles/estilos';
+import { mobile } from '../styles/mobile';
 
 export const Formulario = () => {
   const [nome, setNome] = useState('');
@@ -95,7 +96,7 @@ export const Formulario = () => {
             { label: 'SE', value: 'SE' },
             { label: 'TO', value: 'TO' },
         ]}
-        style={pickerSelectStyles}
+        style={mobile}
       />
 
       <Text style={styles.label}>Linguagens</Text>
@@ -124,7 +125,7 @@ export const Formulario = () => {
         <Text style={styles.checkboxOption}>
           <Text style={styles.checkboxLabel}>PHP</Text>
           <CheckBox
-            value={linguagens.python}
+            value={linguagens.PHP}
             onValueChange={() => handleCheckboxChange('PHP')}
           />
         </Text>
@@ -135,70 +136,6 @@ export const Formulario = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
-  label: {
-    fontSize: 16,
-    marginVertical: 8,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 4,
-    padding: 8,
-    fontSize: 16,
-  },
-  radioGroup: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: 8,
-  },
-  radioOption: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  radioLabel: {
-    marginRight: 8,
-  },
-  checkboxGroup: {
-    marginVertical: 8,
-  },
-  checkboxOption: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 4,
-  },
-  checkboxLabel: {
-    marginRight: 8,
-  },
-});
 
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    color: 'black',
-    paddingRight: 30,
-    marginVertical: 8,
-  },
-  inputAndroid: {
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    color: 'black',
-    paddingRight: 30,
-    marginVertical: 8,
-  },
-});
 
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import { Form } from './src/components/campos';
+import { Formulario } from './src/components/campos';
 
 export default function App() {
   return (
 
     <SafeAreaView style={styles.container}>
-      <Form />
+      <Formulario />
     </SafeAreaView>
 
 
