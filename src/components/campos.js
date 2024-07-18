@@ -3,7 +3,7 @@ import { View, Text, TextInput, Picker, CheckBox, Button } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 import RNPickerSelect from 'react-native-picker-select';
 import { styles } from '../styles/estilos';
-import { mobile } from '../styles/mobile';
+
 
 export const Formulario = () => {
   const [nome, setNome] = useState('');
@@ -29,10 +29,12 @@ export const Formulario = () => {
       uf,
       linguagens: Object.keys(linguagens).filter((val) => linguagens[val]),
     });
+    alert("Dados enviados!");
   };
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>FORMULÁRIO DE CADASTRO</Text>
       <Text style={styles.label}>Nome</Text>
       <TextInput
         style={styles.input}
@@ -65,12 +67,9 @@ export const Formulario = () => {
 
       <Text style={styles.label}>UF</Text>
       <RNPickerSelect
-        onValueChange={(value) => setUf(value)}
+        onValueChange={(value) => setUf(value)} 
+        value={uf}
         items={[
-            { label: 'Selecione a UF', value: '' },
-            { label: 'SP', value: 'SP' },
-            { label: 'RJ', value: 'RJ' },
-            { label: 'MG', value: 'MG' },
             { label: 'AC', value: 'AC' },
             { label: 'AL', value: 'AL' },
             { label: 'AP', value: 'AP' },
@@ -81,6 +80,7 @@ export const Formulario = () => {
             { label: 'ES', value: 'ES' },
             { label: 'GO', value: 'GO' },
             { label: 'MA', value: 'MA' },
+            { label: 'MG', value: 'MG' },
             { label: 'MT', value: 'MT' },
             { label: 'MS', value: 'MS' },
             { label: 'PA', value: 'PA' },
@@ -88,15 +88,20 @@ export const Formulario = () => {
             { label: 'PR', value: 'PR' },
             { label: 'PE', value: 'PE' },
             { label: 'PI', value: 'PI' },
+            { label: 'RJ', value: 'RJ' },
             { label: 'RN', value: 'RN' },
             { label: 'RS', value: 'RS' },
             { label: 'RO', value: 'RO' },
             { label: 'RR', value: 'RR' },
             { label: 'SC', value: 'SC' },
             { label: 'SE', value: 'SE' },
+            { label: 'SP', value: 'SP' },
             { label: 'TO', value: 'TO' },
         ]}
-        style={mobile}
+        placeholder={{
+          label: 'Selecione um estado...',
+          value: '',
+        }}
       />
 
       <Text style={styles.label}>Linguagens</Text>

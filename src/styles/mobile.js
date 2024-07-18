@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const pickerSelectStyles = StyleSheet.create({
+export const mobileSelect = StyleSheet.create({
     inputIOS: {
       fontSize: 16,
       paddingVertical: 12,

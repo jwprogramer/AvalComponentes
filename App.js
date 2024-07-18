@@ -1,21 +1,15 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { Formulario } from './src/components/campos';
+import { stylePrincipal } from './src/styles/pagInit';
 
 export default function App() {
   return (
 
-    <SafeAreaView style={styles.container}>
+    <View style={stylePrincipal.container}>
       <Formulario />
-    </SafeAreaView>
-
+    </View>
 
   );
 
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
