@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Picker, CheckBox, Button } from 'react-native';
+import { View, Text, TextInput, CheckBox, Button } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
+import { RadioButton } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
 import { styles } from '../styles/estilos';
+import { mobileSelect } from '../styles/mobile';
 
 
 export const Formulario = () => {
@@ -16,6 +18,20 @@ export const Formulario = () => {
     python: false,
     PHP: false,
   });
+
+  const RadioOption = ({ label, value, status, onPress, color}) => (
+    <View style={styles.radioOption}>
+      <RadioButton
+        value={value}
+        status={status === value ? 'checked' : 'unchecked'}
+        onPress={() => onPress(value)}
+        color={color}
+      />
+      <Text onPress={() => onPress(value)} style={styles.radioLabel}>
+        {label}
+      </Text>
+    </View>
+  );
 
   const handleCheckboxChange = (val) => {
     setLinguagens({ ...linguagens, [val]: !linguagens[val] });
@@ -53,51 +69,60 @@ export const Formulario = () => {
         style={styles.input}
       />
 
-      <Text style={styles.label}>Sexo</Text>
-      <View style={styles.radioGroup}>
-        <Text onPress={() => setSexo('Masculino')} style={styles.radioOption}>
-          <Text style={styles.radioLabel}>Masculino</Text>
-          <CheckBox value={sexo === 'Masculino'} />
-        </Text>
-        <Text onPress={() => setSexo('Feminino')} style={styles.radioOption}>
-          <Text style={styles.radioLabel}>Feminino</Text>
-          <CheckBox value={sexo === 'Feminino'} />
-        </Text>
+      <View>
+        <Text style={styles.label}>Sexo</Text>
+        <View style={styles.radioGroup}>
+          <RadioOption
+            label="Masculino"
+            value="Masculino"
+            status={sexo}
+            onPress={setSexo}
+            color={styles.radioButton.color}
+          />
+          <RadioOption
+            label="Feminino"
+            value="Feminino"
+            status={sexo}
+            onPress={setSexo}
+            color={styles.radioButton.color}
+          />
+        </View>
       </View>
 
       <Text style={styles.label}>UF</Text>
       <RNPickerSelect
-        onValueChange={(value) => setUf(value)} 
+        onValueChange={(value) => setUf(value)}
         value={uf}
         items={[
-            { label: 'AC', value: 'AC' },
-            { label: 'AL', value: 'AL' },
-            { label: 'AP', value: 'AP' },
-            { label: 'AM', value: 'AM' },
-            { label: 'BA', value: 'BA' },
-            { label: 'CE', value: 'CE' },
-            { label: 'DF', value: 'DF' },
-            { label: 'ES', value: 'ES' },
-            { label: 'GO', value: 'GO' },
-            { label: 'MA', value: 'MA' },
-            { label: 'MG', value: 'MG' },
-            { label: 'MT', value: 'MT' },
-            { label: 'MS', value: 'MS' },
-            { label: 'PA', value: 'PA' },
-            { label: 'PB', value: 'PB' },
-            { label: 'PR', value: 'PR' },
-            { label: 'PE', value: 'PE' },
-            { label: 'PI', value: 'PI' },
-            { label: 'RJ', value: 'RJ' },
-            { label: 'RN', value: 'RN' },
-            { label: 'RS', value: 'RS' },
-            { label: 'RO', value: 'RO' },
-            { label: 'RR', value: 'RR' },
-            { label: 'SC', value: 'SC' },
-            { label: 'SE', value: 'SE' },
-            { label: 'SP', value: 'SP' },
-            { label: 'TO', value: 'TO' },
+          { label: 'AC', value: 'AC' },
+          { label: 'AL', value: 'AL' },
+          { label: 'AP', value: 'AP' },
+          { label: 'AM', value: 'AM' },
+          { label: 'BA', value: 'BA' },
+          { label: 'CE', value: 'CE' },
+          { label: 'DF', value: 'DF' },
+          { label: 'ES', value: 'ES' },
+          { label: 'GO', value: 'GO' },
+          { label: 'MA', value: 'MA' },
+          { label: 'MG', value: 'MG' },
+          { label: 'MT', value: 'MT' },
+          { label: 'MS', value: 'MS' },
+          { label: 'PA', value: 'PA' },
+          { label: 'PB', value: 'PB' },
+          { label: 'PR', value: 'PR' },
+          { label: 'PE', value: 'PE' },
+          { label: 'PI', value: 'PI' },
+          { label: 'RJ', value: 'RJ' },
+          { label: 'RN', value: 'RN' },
+          { label: 'RS', value: 'RS' },
+          { label: 'RO', value: 'RO' },
+          { label: 'RR', value: 'RR' },
+          { label: 'SC', value: 'SC' },
+          { label: 'SE', value: 'SE' },
+          { label: 'SP', value: 'SP' },
+          { label: 'TO', value: 'TO' },
         ]}
+        style={mobileSelect}
         placeholder={{
           label: 'Selecione um estado...',
           value: '',

@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
   radioGroup: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 10,
+    marginVertical: 5,
   },
   radioOption: {
     flexDirection: 'row',
@@ -46,6 +46,9 @@ export const styles = StyleSheet.create({
     marginRight: 8,
     fontSize: 16,
     color: '#666',
+  },
+  radioButton: {
+    color: '#008000',
   },
   checkboxGroup: {
     marginVertical: 10,
